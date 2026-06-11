@@ -26,7 +26,7 @@ while attempts < max_attempts:
 
     if user_number == random_number:
         print(f"\nYou guessed the right number: {random_number}!")
-        print("Congratulations! 🎉")
+        print("Congratulations!")
         break
 
     elif user_number > random_number:
