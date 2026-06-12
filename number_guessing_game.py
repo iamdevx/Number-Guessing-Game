@@ -1,46 +1,57 @@
 from random import randint
 
-random_number = randint(1, 100)
-attempts = 0
-max_attempts = 10
+while True:
 
-print("\nWelcome to the Number Guessing Game!")
-print("You have 10 chances to guess the correct number between 1 and 100.")
-print("\nLet's Begin!")
+    random_number = randint(1, 100)
+    attempts = 0
+    max_attempts = 10
 
-while attempts < max_attempts:
+    print("\nWelcome to the Number Guessing Game!")
+    print("You have 10 chances to guess the correct number between 1 and 100.")
+    print("\nLet's Begin!")
 
-    print(f"\nAttempt {attempts + 1}/{max_attempts}")
+    while attempts < max_attempts:
 
-    try:
-        user_number = int(input("What's your guess?: "))
-    except ValueError:
-        print("Please enter a valid number!")
-        continue
+        print(f"\nAttempt {attempts + 1}/{max_attempts}")
 
-    if not 1 <= user_number <= 100:
-        print("Please enter a number between 1 and 100!")
-        continue
+        try:
+            user_number = int(input("What's your guess?: "))
+        except ValueError:
+            print("Please enter a valid number!")
+            continue
 
-    attempts += 1
+        if not 1 <= user_number <= 100:
+            print("Please enter a number between 1 and 100!")
+            continue
 
-    if user_number == random_number:
-        print(f"\nYou guessed the right number: {random_number}!")
-        print("Congratulations!")
-        break
+        attempts += 1
 
-    elif user_number > random_number:
-        print("Whoops! Go LOWER.")
+        if user_number == random_number:
+            print(f"\nYou guessed the right number: {random_number}!")
+            print("Congratulations!")
+            break
+
+        elif user_number > random_number:
+            print("Whoops! Go LOWER.")
+
+        else:
+            print("Whoops! Go HIGHER.")
+
+        print(f"{max_attempts - attempts} attempts remaining.")
 
     else:
-        print("Whoops! Go HIGHER.")
+        print(f"\nGame Over! The number was {random_number}.")
 
-    print(f"{max_attempts - attempts} attempts remaining.")
+    while True:
+        play_again = input("\nPlay again? (yes/no): ").lower()
 
-else:
-    print(f"\nGame Over! The number was {random_number}.")
+        if play_again == "yes":
+            break
 
-print("\nThanks for playing!")
+        elif play_again == "no":
+            print("\nThanks for playing!")
+            exit()
 
-
+        else:
+            print("Please enter only 'yes' or 'no'.")
 
